@@ -1,29 +1,39 @@
-print('введите первое число')
-num_1 = input()
-if num_1.isdigit():
-    num_1 = int(num_1)
-else:
-    print('некорректный ввод')
+#функция проверки введенного числа на корректность, возвращает число с плавающей точкой:
+def check_num_input(x):
+    while not x.replace('.', '', 1).lstrip('-').isdigit():
+        x = input('Некорректный ввод. Введите число: ')
+    return float(x)
 
-print('введите арифметическую операцию: +, -, *, /')
-action = input()
-if action not in '+-*/':
-    print('некорректный ввод')
+#функция проверки доступных операций:
+def check_action(x):
+    while x not in '+-/*':
+        x = input('Допускаются только: +, -, *, /. Повторите ввод: ')
+    return str(x)
 
-print('введите второе число')
-num_2 = input()
-if num_2.isdigit():
-    num_2 = int(num_2)
-else:
-    print('некорректный ввод')
+# 4 функции самих операций:
+def plus(a, b):
+    return a + b
 
-if action == '+':
-    print('результат:', num_1 + num_2)
-elif action == '-':
-    print('результат:', num_1 - num_2)
-elif action == '*':
-    print('результат:', num_1 * num_2)
-elif action == '/' and num_2 != 0:
-    print('результат:', num_1 / num_2)
-elif action == '/' and num_2 == 0:
-    print('на 0 делить нельзя!')
+def minus(a, b):
+    return a - b
+
+def multy(a, b):
+    return a * b
+
+def divide(a, b):
+    if b == 0:
+        print('На 0 делить нельзя!')
+        return 'как-нибудь в другой раз.'
+    else:
+        return a / b
+
+#словарь операций, вызывающий нужную функцию:
+actions = {'+': plus, '-': minus, '*': multy, '/': divide}
+
+#ввод значений:
+a = check_num_input(input('Введите первое число: '))
+d = check_action(input('Введите арифметическую операцию: '))
+b = check_num_input(input('Введите второе число: '))
+
+#вывод результата с использованием словаря операций:
+print('Результат:', actions[d](a, b))
