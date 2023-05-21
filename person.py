@@ -11,17 +11,22 @@ class Person():
         description = self.name + ', age: ' + str(self.age) + ', ' + str(self.weight) + ' kg, ' + str(self.height) + ' cm.'
         print(description)
 
-    def sing(self):
-        print(self.name + ' singing')
-
-    def dance(self):
-        print(self.name + ' dancing')
-
     def update_weight(self, kg):
         self.weight = kg
 
+class Warrior(Person):
+    
+    def __init__(self, name, age, height):
+        super().__init__(name, age, height)
+        self.rage = 100
 
-man = Person('Max', 33, 190)
+    def description_person(self):
+        description = self.name + ', age: ' + str(self.age) + ', rage: ' + str(self.rage)
+        return description
+
+warrior = Warrior('Konan', 32, 200)
+print('Warrior name: ' + warrior.description_person())
+
+man = Person('Mad Max', 33, 190)
 man.update_weight(75)
-
 man.description_person()
