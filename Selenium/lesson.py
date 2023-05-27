@@ -22,11 +22,16 @@ user_name.send_keys(login)
 # findelement by name and fill password
 password = browser.find_element(by=By.NAME, value='password')
 password.send_keys(password_one)
+time.sleep(3)
+#browser.refresh()
 
 # find login button by Xpath and push the button
 button_login = browser.find_element(by=By.XPATH, value='//*[@id="login-button"]')
 button_login.click()
-
+time.sleep(3)
+browser.back()
+time.sleep(3)
+browser.forward()
 # # check web page by title text
 # text_products = browser.find_element(by=By.XPATH, value='//span[@class="title"]')
 # value_text_products = text_products.text
@@ -57,10 +62,8 @@ button_login.click()
 # sys_date = datetime.datetime.utcnow().strftime('%Y.%m.%d.%H.%M')
 # name_screen = 'screen' + sys_date + '.png'
 # browser.save_screenshot('C:/Users/user/PycharmProjects/AutomatioQA/Selenium/screens/' + name_screen)
-
-menu = browser.find_element(By.ID, value='react-burger-menu-btn')
-menu.click()
+#
+# menu = browser.find_element(By.ID, value='react-burger-menu-btn')
+# menu.click()
 time.sleep(3)
-
-
 browser.close()
