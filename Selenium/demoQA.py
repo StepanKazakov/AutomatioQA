@@ -19,11 +19,11 @@ time.sleep(3)
 
 # convert date to UNIX format + 86400*10 seconds and convert new date to UTC format
 now_date = datetime.today()
-print(now_date)
+print(now_date.strftime('%m/%d/%Y'))
 unix_date = datetime.timestamp(now_date)
 ten_days_later = unix_date + 864000
 new_date = datetime.utcfromtimestamp(ten_days_later).strftime('%m/%d/%Y')
-print(now_date)
+print(new_date)
 
 # set new date in input
 calendar_input.send_keys(new_date)
