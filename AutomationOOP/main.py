@@ -21,7 +21,7 @@ class Test_1():
         login_performance = 'performance_glitch_user'
         multipassword = 'secret_sauce'
 
-        login = login_page(browser)
+        login = login_page.new_login(browser)
         login.authorisation(login_performance, multipassword)
 
         print('The end')

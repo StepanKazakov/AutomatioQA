@@ -1,10 +1,10 @@
 import time
-import names
 from random import choice, randrange
+import names
 from selenium import webdriver
 from selenium.webdriver import Keys
-from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.common.by import By
 
 browser = webdriver.Chrome(service=ChromeService(executable_path="chromium.chromedriver"))
 base_url = 'https://www.saucedemo.com'
