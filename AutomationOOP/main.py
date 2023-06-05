@@ -1,31 +1,34 @@
-import time
-import login_page
 from selenium import webdriver
-from selenium.webdriver import Keys, ActionChains
-from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service as ChromeService
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait
+
+import login_page
 
 
-class Test_1():
+class TestLogin():
 
     def test_select_product(self):
         browser = webdriver.Chrome(service=ChromeService(executable_path="chromium.chromedriver"))
         base_url = 'https://www.saucedemo.com'
-        browser.get(base_url)
-        browser.maximize_window()
-
-        print('Start test')
-
-        login_performance = 'performance_glitch_user'
+        login_user = ['standard_user', 'locked_out_user', 'problem_user', 'performance_glitch_user']
         multipassword = 'secret_sauce'
 
-        login = login_page.new_login(browser)
-        login.authorisation(login_performance, multipassword)
+        browser.get(base_url)
+        browser.maximize_window()
+        print('Start test')
 
-        print('The end')
+        login = login_page.NewLogin(browser)
+        login.authorisation(login_user[0], multipassword)
+        print('Standard user login success')
+
+        login.authorisation(login_user[1], multipassword)
+        print('Locked user locked out')
+
+        login.authorisation(login_user[2], multipassword)
+        print('Problem user login success')
+
+        login.authorisation(login_user[3], multipassword)
+        print('Glitch user login success')
 
 
-test = Test_1()
+test = TestLogin()
 test.test_select_product()
