@@ -28,14 +28,21 @@ time.sleep(3)
 # find login button by Xpath and push the button
 button_login = browser.find_element(by=By.XPATH, value='//*[@id="login-button"]')
 button_login.click()
+
+# check web page by title text
+text_products = browser.find_element(by=By.XPATH, value='//span[@class="title"]')
+value_text_products = text_products.text
+assert value_text_products == 'Products'
+
+browser.find_element(by=By.XPATH, value='//button[@id="react-burger-menu-btn"]').click()
 time.sleep(3)
-browser.back()
-time.sleep(3)
-browser.forward()
-# # check web page by title text
-# text_products = browser.find_element(by=By.XPATH, value='//span[@class="title"]')
-# value_text_products = text_products.text
-# assert value_text_products == 'Products'
+browser.find_element(by=By.XPATH, value='//a[@id="logout_sidebar_link"]').click()
+
+
+# time.sleep(3)
+# browser.back()
+# time.sleep(3)
+# browser.forward()
 #
 # # check correct url
 # url = 'https://www.saucedemo.com/inventory.html'
@@ -65,5 +72,6 @@ browser.forward()
 #
 # menu = browser.find_element(By.ID, value='react-burger-menu-btn')
 # menu.click()
+
 time.sleep(3)
 browser.close()

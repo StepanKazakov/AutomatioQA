@@ -13,12 +13,11 @@ class NewLogin():
 
 
     def authorisation(self, login_name, login_pass):
-        user_name = WebDriverWait(self.browser, 30).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="user-name"]')))
-        user_name.send_keys(login_name)
+        WebDriverWait(self.browser, 5).until(EC.element_to_be_clickable((
+                                               By.XPATH, '//*[@id="user-name"]'))) \
+                                       .send_keys(login_name)
+        time.sleep(2)
 
-        password = WebDriverWait(self.browser, 30).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="password"]')))
-        password.send_keys(login_pass)
-
-        time.sleep(3)
-        password.send_keys(Keys.RETURN)
-        assert
+        WebDriverWait(self.browser, 5).until(EC.element_to_be_clickable((
+                                               By.XPATH, '//*[@id="password"]'))) \
+                                       .send_keys(login_pass, Keys.RETURN)
