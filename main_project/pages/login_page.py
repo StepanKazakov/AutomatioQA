@@ -13,7 +13,6 @@ class NewLogin(Base):
     def __init__(self, browser):
         super().__init__(browser)
         self.browser = browser
-        self.get_current_url()
 
     # locators & variables
     url = 'https://www.saucedemo.com'
@@ -35,12 +34,11 @@ class NewLogin(Base):
     def input_user_name(self, user_name):
         self.get_user_name().send_keys(user_name)
         print('input user name')
-        time.sleep(2)
+        time.sleep(1)
 
     def input_password(self, password):
         self.get_password().send_keys(password, Keys.RETURN)
         print('input password')
-        time.sleep(2)
 
     # Methods
     def authorisation(self):
